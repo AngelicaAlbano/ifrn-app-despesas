@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastradas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let despesa of despesas">
+      <ion-icon *ngIf="despesa.tipo === 'Alimentação'" name="fast-food-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Educação'" name="school-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Esporte'" name="baseball-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Lar'" name="home-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Lazer'" name="game-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Mercado'" name="storefront-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Saúde'" name="health-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Transporte'" name="bus-outline"></ion-icon> 
+      <ion-icon *ngIf="despesa.tipo === 'Outra'" name="information-circle-outline"></ion-icon> 
+      <ion-label>{{despesa.motivo}}</ion-label>
+      <ion-label>{{despesa.valor | currency:'BRL':true}}</ion-label>
+      <ion-label>{{despesa.data | date: 'dd/MM/yyyy'}}</ion-label>
+      <ion-label>{{despesa.tipo}}</ion-label>
+      <ion-label>{{despesa.origem}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

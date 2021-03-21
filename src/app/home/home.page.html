@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary ion-text-center">
+    <ion-title class="principal">
+      Nova Despesa
+    </ion-title>
+  </ion-toolbar>
+  <ion-text *ngIf="adicionado === true" color="success">
+    <h5>Despesa adicionada com sucesso!</h5>
+  </ion-text>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Motivo da despesa</ion-label>
+      <ion-input type="text" [(ngModel)]="despesa.motivo" required=true></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Valor gasto</ion-label>
+      <ion-input type="number" [(ngModel)]="despesa.valor" min="0" required=true></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tipo</ion-label>
+      <ion-select placeholder="Tipo da despesa" class="custom-options" [(ngModel)]="despesa.tipo">
+        <ion-select-option *ngFor="let tipo of tipos" [value]="tipo" required=true>{{tipo}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" placeholder="Selecione a data" [(ngModel)]="despesa.data" required=true>
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Origem</ion-label>
+      <ion-input type="text" [(ngModel)]="despesa.origem" required=true></ion-input>
+    </ion-item>
+
+   
+  </ion-list>
+  <ion-button fill="outline" color="danger" (click)="limpar()">Limpar</ion-button>
+  <ion-button fill="solid" color="primary" (click)="adicionar()">Adicionar</ion-button>
+  <ion-button fill="solid" color="tertiary" [routerLink]="['/exibe-despesas']" routerLinkActive="router-link-active">
+    Despesas cadastradas</ion-button>
+
+
+</ion-content>
